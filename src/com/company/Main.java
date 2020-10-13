@@ -32,5 +32,6 @@ public class Main {
 
         String formattedMonthlyPayment = NumberFormat.getCurrencyInstance().format(monthlyPayment);
         return formattedMonthlyPayment;
+
     }
 }
