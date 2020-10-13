@@ -14,19 +14,43 @@ public class Main {
         final byte MONTHS_IN_YEAR = 12;
         final byte PERCENT = 100;
 
-        int principal = helper.getIntFromScanner("Principal: ");
-        double monthlyRate = (helper.getDoubleFromScanner("Annual Interest Rate: ")/PERCENT)/MONTHS_IN_YEAR;
-        int months = helper.getIntFromScanner("Period (\"Years\"): ")*MONTHS_IN_YEAR;
+        int principal, numberOfYears, numberOfMonths = 0;
+        double yearlyRate, monthlyRate = 0;
+
+        while (true) {
+            principal =  helper.getIntFromScanner("Principal ($1K - $1M): ");
+            if (principal >= 1000 && principal <= 1_000_000)
+                break;
+            System.out.println("Enter a number between 1,000 and 1,000,000");
+        }
+
+        while (true) {
+            yearlyRate = helper.getDoubleFromScanner("Annual Interest Rate: ");
+            if (yearlyRate > 0 || yearlyRate <= 30){
+                monthlyRate = (yearlyRate/PERCENT)/MONTHS_IN_YEAR;
+                break;
+            }
+            System.out.println("Enter a number greater than 0 and less than or equal to 30");
+        }
+
+        while (true) {
+            numberOfYears = helper.getIntFromScanner("Period (\"Years\"): ");
+            if (numberOfYears >= 1 && numberOfYears <= 30) {
+                numberOfMonths = numberOfYears * MONTHS_IN_YEAR;
+                break;
+            }
+            System.out.println("Enter a value between 1 and 30");
+        }
 
         System.out.println("-----------------------------------");
-        System.out.println("Mortgage: " + mortgageFormula(principal, monthlyRate, months));
+        System.out.println("Mortgage: " + mortgageFormula(principal, monthlyRate, numberOfMonths));
         System.out.println("-----------------------------------");
     }
 
     public static String mortgageFormula(int principal, double monthlyRate, int numberOfMonths){
         double monthlyPayment;
-        double formulaNumerator = monthlyRate * (Math.pow(1 + monthlyRate, numberOfMonths));
         double formulaDenominator = (Math.pow(1+monthlyRate, numberOfMonths)) - 1;
+        double formulaNumerator = monthlyRate * (Math.pow(1 + monthlyRate, numberOfMonths));
 
         monthlyPayment = principal * (formulaNumerator/formulaDenominator);
 
