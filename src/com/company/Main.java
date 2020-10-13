@@ -34,4 +34,3 @@ public class Main {
         return formattedMonthlyPayment;
     }
 }
-1
