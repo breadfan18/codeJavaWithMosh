@@ -15,4 +15,10 @@ public class Helper {
         System.out.print(prompt);
         return sc.nextDouble();
     }
+
+    public String getStringFromScanner(String prompt){
+        Scanner sc = new Scanner(System.in);
+        System.out.print(prompt);
+        return sc.next();
+    }
 }
