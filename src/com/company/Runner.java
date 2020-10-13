@@ -3,10 +3,20 @@ package com.company;
 public class Runner {
 
     public static void main(String[] args) {
-        System.out.println(isFirst(110_000));
+        System.out.println(fizzBuzz());
     }
 
-    public static String isFirst(int income) {
-        return (income > 100_000) ? "First" : "Economy";
+    public static String fizzBuzz() {
+        Helper help = new Helper();
+        int number = help.getIntFromScanner("Enter a number: ");
+
+        if (number % (5 * 3) == 0)
+            return "FizzBuzz";
+        else if (number % 5 == 0)
+            return "Fizz";
+        else if (number % 3 == 0)
+            return "Buzz";
+
+        return String.valueOf(number);
     }
 }
