@@ -56,6 +56,7 @@ public class Main {
 
         String formattedMonthlyPayment = NumberFormat.getCurrencyInstance().format(monthlyPayment);
         return formattedMonthlyPayment;
-
     }
+
+    public static doube validation (String userInput, String doubleOrInt, )
 }
