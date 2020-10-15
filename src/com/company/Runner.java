@@ -14,7 +14,7 @@ public class Runner {
             if (input.equals("pass"))
                 continue;
             if (input.equals("quit"))
-                break;int years;
+                break;
             System.out.println(input);
         }
 
