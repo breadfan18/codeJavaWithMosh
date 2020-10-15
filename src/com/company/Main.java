@@ -27,26 +27,6 @@ public class Main {
 
     }
 
-    public static String mortgageFormula(int principal, double monthlyRate, int numberOfMonths){
-        double monthlyPayment;
-        double formulaDenominator = (Math.pow(1+monthlyRate, numberOfMonths)) - 1;
-        double formulaNumerator = monthlyRate * (Math.pow(1 + monthlyRate, numberOfMonths));
-
-        monthlyPayment = principal * (formulaNumerator/formulaDenominator);
-
-        return NumberFormat.getCurrencyInstance().format(monthlyPayment);
-    }
-
-    public static void calculateBalances(int principal, double monthlyRate, int numberOfPayments) {
-
-        for (int i = 0; i < numberOfPayments; i++) {
-            double firstExpression = principal * ((Math.pow(1 + monthlyRate, numberOfPayments)) - (Math.pow(1 + monthlyRate, i)));
-            double secondExpression = (Math.pow(1 + monthlyRate, numberOfPayments))-1;
-
-            System.out.println(NumberFormat.getCurrencyInstance().format(firstExpression/secondExpression));
-        }
-    }
-
     public static double readNumber(String prompt, double min, double max) {
         double value;
 
@@ -58,4 +38,25 @@ public class Main {
         }
         return value;
     }
+
+    public static String mortgageFormula(int principal, double monthlyRate, int numberOfMonths){
+        double monthlyPayment;
+        double formulaDenominator = (Math.pow(1+monthlyRate, numberOfMonths)) - 1;
+        double formulaNumerator = monthlyRate * (Math.pow(1 + monthlyRate, numberOfMonths));
+
+        monthlyPayment = principal * (formulaNumerator/formulaDenominator);
+
+        return NumberFormat.getCurrencyInstance().format(monthlyPayment);
+    }
+
+    public static void calculateBalances(int principal, double monthlyRate, int numberOfPayments) {
+        for (int i = 0; i <= numberOfPayments; i++) {
+            double firstExpression = principal * ((Math.pow(1 + monthlyRate, numberOfPayments)) - (Math.pow(1 + monthlyRate, i)));
+            double secondExpression = (Math.pow(1 + monthlyRate, numberOfPayments))-1;
+
+            System.out.println(NumberFormat.getCurrencyInstance().format(firstExpression/secondExpression));
+        }
+    }
+
+
 }
