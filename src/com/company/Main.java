@@ -19,9 +19,10 @@ public class Main {
         byte numberOfYears = (byte) readNumber("Period (\"Years\"): ", 1, 30);
         int numberOfMonths = numberOfYears * MONTHS_IN_YEAR;
 
-        System.out.println("-----------------------------------");
+        helper.underline("MORTGAGE");
         System.out.println("Mortgage: " + mortgageFormula(principal, monthlyRate, numberOfMonths));
-        System.out.println("-----------------------------------");
+        System.out.println();
+        helper.underline("PAYMENTS");
     }
 
     public static String mortgageFormula(int principal, double monthlyRate, int numberOfMonths){
@@ -32,6 +33,19 @@ public class Main {
         monthlyPayment = principal * (formulaNumerator/formulaDenominator);
 
         return NumberFormat.getCurrencyInstance().format(monthlyPayment);
+    }
+
+    public static void calculateBalances(int principal, double monthlyRate, int numberOfPayments) {
+        int numberOfPaymentsAlreadyMade = 0;
+
+        double firstExpression = principal * ((Math.pow(1 + monthlyRate, numberOfPayments)) - (Math.pow(1 + monthlyRate, numberOfPaymentsAlreadyMade)));
+        double secondExpression = (Math.pow(1 + monthlyRate, numberOfPayments));
+
+        for (int i = 0; i < numberOfPayments; i++) {
+
+
+
+        }
     }
 
     public static double readNumber(String prompt, double min, double max) {

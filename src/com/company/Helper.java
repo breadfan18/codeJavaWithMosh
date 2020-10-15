@@ -21,4 +21,12 @@ public class Helper {
         System.out.print(prompt);
         return sc.next();
     }
+
+    public void underline(String text) {
+        System.out.println(text);
+        for (int i = 0; i < text.length(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 }
