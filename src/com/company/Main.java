@@ -23,6 +23,8 @@ public class Main {
         System.out.println("Mortgage: " + mortgageFormula(principal, monthlyRate, numberOfMonths));
         System.out.println();
         helper.underline("PAYMENTS");
+        calculateBalances(principal, monthlyRate, numberOfMonths);
+
     }
 
     public static String mortgageFormula(int principal, double monthlyRate, int numberOfMonths){
@@ -36,15 +38,12 @@ public class Main {
     }
 
     public static void calculateBalances(int principal, double monthlyRate, int numberOfPayments) {
-        int numberOfPaymentsAlreadyMade = 0;
-
-        double firstExpression = principal * ((Math.pow(1 + monthlyRate, numberOfPayments)) - (Math.pow(1 + monthlyRate, numberOfPaymentsAlreadyMade)));
-        double secondExpression = (Math.pow(1 + monthlyRate, numberOfPayments));
 
         for (int i = 0; i < numberOfPayments; i++) {
+            double firstExpression = principal * ((Math.pow(1 + monthlyRate, numberOfPayments)) - (Math.pow(1 + monthlyRate, i)));
+            double secondExpression = (Math.pow(1 + monthlyRate, numberOfPayments))-1;
 
-
-
+            System.out.println(NumberFormat.getCurrencyInstance().format(firstExpression/secondExpression));
         }
     }
 
