@@ -4,20 +4,19 @@ import java.text.NumberFormat;
 
 public class Main {
 
-    public static Helper helper = new Helper();
+    private static final Helper helper = new Helper();
+    private static final byte MONTHS_IN_YEAR = 12;
+    private static final byte PERCENT = 100;
 
     public static void main(String[] args) {
         mortgageCalculator();
     }
 
     public static void mortgageCalculator(){
-        final byte MONTHS_IN_YEAR = 12;
-        final byte PERCENT = 100;
-
         int principal = (int) readNumber("Principal ($1K - $1M): ", 1000, 1_000_000);
         double yearlyRate = readNumber("Annual Interest Rate: ", 0, 30);
         double monthlyRate = (yearlyRate/PERCENT)/MONTHS_IN_YEAR;
-        int numberOfYears = (int) readNumber("Period (\"Years\"): ", 1, 30);
+        byte numberOfYears = (byte) readNumber("Period (\"Years\"): ", 1, 30);
         int numberOfMonths = numberOfYears * MONTHS_IN_YEAR;
 
         System.out.println("-----------------------------------");
